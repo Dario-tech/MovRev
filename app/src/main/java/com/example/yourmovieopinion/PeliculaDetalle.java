@@ -26,7 +26,7 @@ public class PeliculaDetalle extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pelicula_detalle);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         recyclerView = (RecyclerView) findViewById(R.id.rv_Reviews);
         recyclerView.setLayoutManager(new GridLayoutManager(this,1));
