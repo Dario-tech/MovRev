@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistroActivity">
+
+    <TextView
+        android:id="@+id/tv_creacuenta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="0dp"
+        android:text="Crea tu cuenta ahora"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/rl_datosregistro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_creacuenta"
+        android:layout_marginTop="40dp">
+
+        <TextView
+            android:id="@+id/tv_correo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:text="Correo electrónico:"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/et_correo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_correo"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="40dp" />
+
+        <TextView
+            android:id="@+id/tv_nombreusuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_correo"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:text="Nombre de usuario:"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/et_nombreusuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_nombreusuario"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="40dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_contrasena"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_nombreusuario"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:text="Contraseña:"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/et_contrasena"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_contrasena"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="40dp"
+            android:password="true" />
+
+        <TextView
+            android:id="@+id/tv_repcontrasena"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_contrasena"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:text="Repite la contraseña:"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/et_repcontrasena"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_repcontrasena"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="40dp"
+            android:password="true" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_datosregistro"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="110dp"
+        android:layout_marginBottom="50dp"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="Crear cuenta"
+        android:textSize="18dp" />
+
+</RelativeLayout>
