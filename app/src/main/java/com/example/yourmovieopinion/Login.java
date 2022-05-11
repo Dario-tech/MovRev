@@ -1,13 +1,7 @@
 package com.example.yourmovieopinion;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.MenuItemCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,13 +9,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.MenuItemCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputLayout;
+
 import java.util.regex.Pattern;
 
-public class RegistroActivity extends AppCompatActivity {
-
+public class Login extends AppCompatActivity {
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
                     //"(?=.*[0-9])" +         //at least 1 digit
@@ -32,7 +31,6 @@ public class RegistroActivity extends AppCompatActivity {
                     "(?=\\S+$)" +           //no white spaces
                     ".{4,}" +               //at least 4 characters
                     "$");
-    private TextInputLayout textInputEmail;
     private TextInputLayout textInputUsername;
     private TextInputLayout textInputPassword;
     private TextInputLayout textInputVerifyPassword;
@@ -40,16 +38,13 @@ public class RegistroActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.registro);
-
+        setContentView(R.layout.activity_login);
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        textInputEmail = findViewById(R.id.til_email);
         textInputUsername = findViewById(R.id.til_nombre);
         textInputPassword = findViewById(R.id.til_password);
         textInputVerifyPassword = findViewById(R.id.til_verifyPassword);
@@ -109,7 +104,6 @@ public class RegistroActivity extends AppCompatActivity {
     private void validarDatos() {
         String nombre = textInputUsername.getEditText().getText().toString();
         String password = textInputPassword.getEditText().getText().toString();
-        String correo = textInputEmail.getEditText().getText().toString();
         String verifypassword = textInputVerifyPassword.getEditText().getText().toString();
 
         boolean a = esNombreValido(nombre);
@@ -122,15 +116,16 @@ public class RegistroActivity extends AppCompatActivity {
             textInputVerifyPassword.setError("Las contraseñas no coinciden");
             //Toast.makeText(this,"Las contraseñas no coinciden",Toast.LENGTH_LONG).show();
         }
-        boolean c = esCorreoValido(correo);
 
-        if (a && b && c) {
+
+        if (a && b) {
             // OK, se pasa a la siguiente acción
             Toast.makeText(this, "Se guarda el registro", Toast.LENGTH_LONG).show();
         }
 
     }
 
+    //Este método solo comprueba que cumple con las restricciones establecidas.
     private boolean esNombreValido(String nombre) {
         Pattern patron = Pattern.compile("^[a-zA-Z ]+$");
         if (!patron.matcher(nombre).matches() || nombre.length() > 30) {
@@ -143,6 +138,7 @@ public class RegistroActivity extends AppCompatActivity {
         return true;
     }
 
+    //Este método solo comprueba que cumple con las restricciones establecidas.
     private boolean validatePassword(String passwordInput) {
 
 
@@ -157,17 +153,5 @@ public class RegistroActivity extends AppCompatActivity {
             return true;
         }
     }
-
-    private boolean esCorreoValido(String correo) {
-        if (!Patterns.EMAIL_ADDRESS.matcher(correo).matches()) {
-            textInputEmail.setError("Correo electrónico inválido");
-            return false;
-        } else {
-            textInputEmail.setError(null);
-        }
-
-        return true;
-    }
-
 
 }

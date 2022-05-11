@@ -1,12 +1,13 @@
-package com.example.yourmovieopinion;
+package com.example.yourmovieopinion.objetos;
 
 import java.util.Date;
 
 public class Review {
-    String usuario;
-    String titulo;
-    String review;
-    Date fecha;
+
+    private String usuario;
+    private String titulo;
+    private String review;
+    private Date fecha;
 
     public Review(String usuario, String titulo, String review, Date fecha) {
         this.usuario = usuario;
@@ -14,6 +15,10 @@ public class Review {
         this.review = review;
         this.fecha = fecha;
     }
+    public Review(){
+
+    }
+
 
     public String getUsuario() {
         return usuario;

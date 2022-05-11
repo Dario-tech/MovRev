@@ -2,10 +2,16 @@ package com.example.yourmovieopinion;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.MenuItemCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,6 +20,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.yourmovieopinion.objetos.Pelicula;
+import com.google.android.material.imageview.ShapeableImageView;
+import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,27 +35,76 @@ public class CarteleraActivity extends AppCompatActivity {
     RecyclerView recyclerViewCartelera;
     ArrayList<Pelicula> listapeliculas;
 
+    Toolbar toolbar;
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cartelera);
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         String queCartelera = getIntent().getStringExtra("cartelera");
         recyclerViewCartelera = (RecyclerView) findViewById(R.id.rv_Cartelera);
         recyclerViewCartelera.setLayoutManager(new GridLayoutManager(this, 2));
 
         rellenarCartelera(queCartelera);
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+
         //CarteleraAdapter adapter = new CarteleraAdapter(listapeliculas);
         //recyclerViewCartelera.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu,menu);
+
+        MenuItem menuItem = menu.findItem(R.id.foto_perfil);
+        View view = MenuItemCompat.getActionView(menuItem);
+        ShapeableImageView fotoPerfil = view.findViewById(R.id.toolbar_fotoperfil);
+
+        fotoPerfil.setOnClickListener(view1 -> {
+            drawerLayout.openDrawer(Gravity.RIGHT);
+            navigationView.setNavigationItemSelectedListener(item ->{
+                return onOptionsItemSelected(item);
+
+            });
+        });
+
+        return super.onCreateOptionsMenu(menu);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_peliculas:
+                Intent intent = new Intent(this,ListaPeliculasFav.class);
+                startActivity(intent);
+                break;
+            case R.id.nav_reviews:
+                Intent intent2 = new Intent(this,MostrarReviews.class);
+                startActivity(intent2);
+                break;
+            case R.id.nav_profile:
+
+                break;
+            case R.id.nav_cerrarSesion:
+
+                break;
+        }
+        return true;
     }
 
     public void rellenarCartelera(String queCartelera) {
         listapeliculas = new ArrayList<Pelicula>();
         //for (int i=0;i<5;i++)
         //    listapeliculas.add(new Pelicula("Avengers: Endgame",R.drawable.engame));
-        final String URL_enCines = "https://imdb-api.com/en/API/InTheaters/k_p0v28841";
-        final String URL_proximamente = "https://imdb-api.com/en/API/ComingSoon/k_p0v28841";
-        final String URL_poster = "https://imdb-api.com/en/API/Posters/k_p0v28841/";
+        final String URL_enCines = "https://imdb-api.com/en/API/InTheaters/k_by7eymju";
+        final String URL_proximamente = "https://imdb-api.com/en/API/ComingSoon/k_by7eymju";
+        final String URL_poster = "https://imdb-api.com/en/API/Posters/k_by7eymju/";
 
         final String URL_cartelera = (queCartelera.equals("encines")) ? URL_enCines : URL_proximamente;
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, URL_cartelera, null,
@@ -109,7 +167,7 @@ public class CarteleraActivity extends AppCompatActivity {
     }
 
     public void toPeliculaDetalle(View view) {
-        Intent intent = new Intent(this, PeliculaDetalle.class);
+        Intent intent = new Intent(getApplicationContext(), PeliculaDetalle.class);
         startActivity(intent);
     }
 }

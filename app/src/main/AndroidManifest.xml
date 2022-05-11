@@ -13,24 +13,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.YourMovieOpinion">
         <activity
+            android:name=".ListaPeliculasFav"
+            android:exported="false"
+            android:label="@string/title_activity_lista_peliculas_fav"
+             />
+        <activity android:name=".MostrarReviews"
+            android:exported="false"
+            ></activity>
+        <activity android:name=".Login"
+            android:exported="false"
+            ></activity>
+        <activity
             android:name=".RegistroActivity"
             android:exported="false"
-            android:parentActivityName=".PeliculaDetalle"/>
+            android:parentActivityName=".PeliculaDetalle" />
         <activity
             android:name=".PeliculaDetalle"
             android:exported="false"
-            android:parentActivityName=".CarteleraActivity">
-        </activity>
+            android:parentActivityName=".CarteleraActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".CarteleraActivity" />
-
     </application>
+
 </manifest>

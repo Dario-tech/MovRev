@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view"
+    android:layoutDirection="rtl"
+    android:gravity="end"
+    android:layout_gravity="right">
+    <!--El atributo android:layoutDirection"rtl" hace que sea desde la derecha a la izquierda-->
+    <group android:checkableBehavior="single"
+        android:layout_gravity="end"
+        android:gravity="end">
+        <item
+            android:id="@+id/nav_peliculas"
+            android:title="Peliculas por ver" />
+        <item
+            android:id="@+id/nav_reviews"
+            android:title="Reseñas realizadas" />
+    </group>
+    <item android:title="Cuenta">
+        <menu>
+            <item
+                android:id="@+id/nav_profile"
+                android:icon="@drawable/ic_person"
+                android:title="Perfil" />
+            <item
+                android:id="@+id/nav_cerrarSesion"
+                android:icon="@drawable/ic_logout"
+                android:title="Cerrar Sesión" />
+        </menu>
+    </item>
+</menu>

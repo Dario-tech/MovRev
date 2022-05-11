@@ -1,4 +1,4 @@
-package com.example.yourmovieopinion;
+package com.example.yourmovieopinion.objetos;
 
 public class Pelicula {
 
@@ -14,6 +14,9 @@ public class Pelicula {
     public Pelicula(String titulo, String imagen_web) {
         this.titulo = titulo;
         this.imagen_web = imagen_web;
+    }
+    public Pelicula(){
+
     }
 
     public String getTitulo() {
